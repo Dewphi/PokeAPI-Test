@@ -4,11 +4,23 @@ const path = require('path');
 // function to create the main window of the application
 function createMainWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
     webPreferences: {
-      nodeIntegration: true // allows using node.js APIs in the renderer process
+      nodeIntegration: false, // disable direct loading of Node.js modules in the renderer process
+      contextIsolation: true, // enable context isolation to protect the renderer process
+      preload: path.join(__dirname, 'preload.js') // load a preload script to securely access Node.js APIs
     }
+  });
+
+  // Set the Content-Security-Policy for the main window
+  mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
+    callback({
+      responseHeaders: {
+        ...details.responseHeaders,
+        'Content-Security-Policy': ["default-src 'self'; font-src 'self' data: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline';"]
+      }
+    });
   });
 
   // load the index.html file of the Angular application
