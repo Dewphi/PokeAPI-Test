@@ -18,7 +18,7 @@ function createMainWindow() {
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        'Content-Security-Policy': ["default-src 'self'; font-src 'self' data: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline';"]
+        'Content-Security-Policy': ["default-src 'self'; font-src 'self' data: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://pokeapi.co;"]
       }
     });
   });
