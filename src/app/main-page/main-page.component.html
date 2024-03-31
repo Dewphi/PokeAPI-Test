@@ -1,9 +1,12 @@
+<!-- input field for the pokemon id -->
 <mat-form-field appearance="fill">
   <mat-label>Pokemon ID</mat-label>
   <input matInput type="number" [(ngModel)]="pokemonId">
 </mat-form-field>
+
 <button mat-raised-button color="primary" (click)="getPokemonDetails()">Confirm</button>
 
+<!-- pokemon name output -->
 <div *ngIf="pokemonDetails">
   <p>{{ pokemonDetails.name }}</p>
 </div>
