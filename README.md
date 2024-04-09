@@ -8,8 +8,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Electron App
 
-Run `electron .` to launch the app as an electron app. Make sure that the base href in your `index.html` file in your `dist` folder is set to `<base href="./">`.
+To run the app, use `npm run electron`. This will automatically execute the correct build target and start the electron app once finished.
 
 ## Building the Electron App
 
 Run `npm run build:windows` to build an executable file. However if you start the app, it will show an error in the console, telling you that the app is unable to load local files and I was unable to resolve this issue yet. If you want to actually see und use this app, start it from VSCode via `electron .`.
+
+Update: The target `npm run preelectron` contains the updated build command specifically configured for execution with electron.
